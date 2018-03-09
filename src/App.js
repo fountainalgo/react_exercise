@@ -1,13 +1,19 @@
 import React from 'react';
-//import {Router, Route, hashHistory} from 'react-router';
-import {HashRouter,Route,Link} from 'react-router-dom';
-const Home = () => (<div><h1>Hello World</h1></div>)
+import {Index} from "./containers/Index";
+import {Router, Route, hashHistory,IndexRoute} from 'react-router';
+//import {HashRouter,Route,Link} from 'react-router-dom';
+
+
 export class App extends React.Component{
     render(){
         return (
-            <HashRouter>
-                <Route path="/" component={Home} />
-            </HashRouter>
+            <Router history={hashHistory}>
+                    <Route path="/" component={Index}>
+                        <IndexRoute component={Home} />
+                        <Route path="home" component={Home} />
+                        <Route path="about" component={About} />
+                    </Route>  
+            </Router>
         )
     }
 }
